@@ -11,7 +11,8 @@ public class CharMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerRB = GetComponent<Rigidbody>();
+       playerRB = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -19,8 +20,10 @@ public class CharMove : MonoBehaviour
     {
         if(Input.GetKey("w"))
         {
-            playerRB.AddForce(Vector3.forward * speed);
+            playerRB.velocity = playerCam.forward* speed;
+            
+
         }
-       
+        this.gameObject.transform.Rotate(new Vector3(0,Input.GetAxis("Horizontal"),0));
     }
 }
