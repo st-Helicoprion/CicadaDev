@@ -5,6 +5,9 @@ using UnityEngine;
 public class CharMove : MonoBehaviour
 {
     public Rigidbody playerRB;
+    public Transform playerCam;
+    public float speed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,13 +17,10 @@ public class CharMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("A"))
+        if(Input.GetKey("w"))
         {
-            playerRB.velocity += Vector3.forward*.5f;
+            playerRB.AddForce(Vector3.forward * speed);
         }
-        if (Input.GetButtonDown("A"))
-        {
-            playerRB.velocity += Vector3.forward * .5f;
-        }
+       
     }
 }
