@@ -5,8 +5,10 @@ using UnityEngine;
 public class SonarSkill : MonoBehaviour
 {
     public GameObject prefab;
-    public Transform container;
-    public float frequency;
+    public Transform playerPos;
+    public float frequency, disableAnim;
+    public Animator toyAnim;
+    public bool startCount;
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +25,39 @@ public class SonarSkill : MonoBehaviour
         }
         else frequency -= 0.5f*Time.deltaTime;
     
+      
+
         if(Input.GetMouseButtonDown(0))
         {
-            
-            Instantiate(prefab, container);
-            frequency += 0.5f;
-          
+           
+            toyAnim.enabled = true;
+            toyAnim.CrossFade("DeformBoneAction", 0.5f);
+            startCount = true;
+        }
+
+        if(startCount==true)
+        {
+            disableAnim += Time.deltaTime;
+
+        }
+
+        if(disableAnim>=4)
+        {
+            startCount = false;
+            disableAnim = 0;
+            toyAnim.enabled = false;
+
+        }
+
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Buzz"))
+        {
+        Instantiate(prefab, playerPos.position,Quaternion.identity);
+            frequency++;
         }
     }
 }

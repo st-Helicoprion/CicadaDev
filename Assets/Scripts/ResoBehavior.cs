@@ -8,8 +8,9 @@ public class ResoBehavior : MonoBehaviour
 {
     public enum FreqRange { high, medium, low};
     public FreqRange setFreq;
-
+    public GameObject prefab;
     public Animator anim;
+    public bool blip;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class ResoBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,21 +36,21 @@ public class ResoBehavior : MonoBehaviour
 
         if (setFreq == FreqRange.high)
         {
-            if(curFreq>=10f&&curFreq<=20f)
+            if(curFreq>=20f)
             {
                 SetInteractable();
             }
         }
         else if (setFreq == FreqRange.medium)
         {
-            if (curFreq >= 5f && curFreq <= 10f)
+            if (curFreq>=10f)
             {
                 SetInteractable();
             }
         }
         else if (setFreq == FreqRange.low)
         {
-            if (curFreq >= 1f && curFreq <= 5f)
+            if (curFreq >= 5f)
             {
                 SetInteractable();
             }
@@ -60,6 +61,16 @@ public class ResoBehavior : MonoBehaviour
 
     void SetInteractable()
     {
-        anim.CrossFade("Glow", 0f);
+        if(transform.gameObject.CompareTag("Light"))
+        {
+            anim.CrossFade("Glow", 0f);
+           
+        }
+
+        if(transform.gameObject.CompareTag("Door"))
+        {
+            anim.CrossFade("Open", 0f);
+           
+        }
     }
 }
