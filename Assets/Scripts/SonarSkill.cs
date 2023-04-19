@@ -9,11 +9,13 @@ public class SonarSkill : MonoBehaviour
     public float frequency, disableAnim;
     public Animator toyAnim;
     public bool startCount;
+    public AudioSource AudioSource;
+    public AudioClip toyNoise;
 
     // Start is called before the first frame update
     void Start()
     { 
-
+        
     }
 
     // Update is called once per frame
@@ -29,7 +31,11 @@ public class SonarSkill : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0))
         {
-           
+
+            if(AudioSource.isPlaying==false)
+            {
+                AudioSource.PlayOneShot(toyNoise);
+            }
             toyAnim.enabled = true;
             toyAnim.CrossFade("DeformBoneAction", 0.5f);
             startCount = true;
@@ -46,6 +52,7 @@ public class SonarSkill : MonoBehaviour
             startCount = false;
             disableAnim = 0;
             toyAnim.enabled = false;
+            AudioSource.Stop();
 
         }
 

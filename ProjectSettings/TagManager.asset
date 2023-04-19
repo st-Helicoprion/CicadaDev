@@ -7,6 +7,7 @@ TagManager:
   - Buzz
   - Light
   - Door
+  - Enemy
   layers:
   - Default
   - TransparentFX

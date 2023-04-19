@@ -10,12 +10,17 @@ public class ResoBehavior : MonoBehaviour
     public FreqRange setFreq;
     public GameObject prefab;
     public Animator anim;
-    public bool blip;
+    public bool blip, isActivated = false;
+    public AudioSource AudioSource, playerAudSource;
+    public AudioManager AudioManager;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        AudioSource = GetComponent<AudioSource>();
+        AudioManager = GameObject.Find("Manager/Player").GetComponent<AudioManager>();
+        playerAudSource = GameObject.Find("Main Camera").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -34,25 +39,41 @@ public class ResoBehavior : MonoBehaviour
         Debug.Log("hit, frequency is"+curFreq);
 
 
-        if (setFreq == FreqRange.high)
+        if (setFreq == FreqRange.high&&isActivated==false)
         {
+            if(AudioSource.isPlaying==false)
+            { 
+                AudioSource.PlayOneShot(AudioManager.highFreq);
+            }
             if(curFreq>=20f)
             {
                 SetInteractable();
+                isActivated = true;
             }
+
         }
-        else if (setFreq == FreqRange.medium)
+        else if (setFreq == FreqRange.medium && isActivated == false)
         {
+            if (AudioSource.isPlaying == false)
+            {
+                AudioSource.PlayOneShot(AudioManager.midFreq);
+            }
             if (curFreq>=10f)
             {
                 SetInteractable();
+                isActivated = true;
             }
         }
-        else if (setFreq == FreqRange.low)
+        else if (setFreq == FreqRange.low && isActivated == false)
         {
+            if (AudioSource.isPlaying == false)
+            {
+                AudioSource.PlayOneShot(AudioManager.lowFreq);
+            }
             if (curFreq >= 5f)
             {
                 SetInteractable();
+                isActivated = true;
             }
         }
 
@@ -64,13 +85,23 @@ public class ResoBehavior : MonoBehaviour
         if(transform.gameObject.CompareTag("Light"))
         {
             anim.CrossFade("Glow", 0f);
+            AudioSource.PlayOneShot(AudioManager.frogLights);
+            playerAudSource.PlayOneShot(AudioManager.success);
            
         }
 
         if(transform.gameObject.CompareTag("Door"))
         {
             anim.CrossFade("Open", 0f);
-           
+            AudioSource.PlayOneShot(AudioManager.doorSound);
+            playerAudSource.PlayOneShot(AudioManager.success);
+        }
+
+        if (transform.gameObject.CompareTag("Enemy"))
+        {
+            anim.CrossFade("EnemyGlow", 0f);
+            AudioSource.PlayOneShot(AudioManager.enemySound);
+            playerAudSource.PlayOneShot(AudioManager.success);
         }
     }
 }
