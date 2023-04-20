@@ -34367,7 +34367,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.5, y: 1, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &750979286
 MonoBehaviour:
@@ -41466,7 +41466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &899846006
 Transform:
   m_ObjectHideFlags: 0
@@ -97550,7 +97550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3899376075435820525, guid: 5b8521120d6d91d45b26e18b6df52799, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.64
+      value: -0.97
       objectReference: {fileID: 0}
     - target: {fileID: 3899376075435820525, guid: 5b8521120d6d91d45b26e18b6df52799, type: 3}
       propertyPath: m_LocalPosition.z
