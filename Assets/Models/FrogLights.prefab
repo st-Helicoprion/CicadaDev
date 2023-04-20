@@ -99,7 +99,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Size: {x: 0.25, y: 0.25, z: 0.25}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &741542399844085644
 MonoBehaviour:
@@ -117,6 +117,10 @@ MonoBehaviour:
   prefab: {fileID: 9014309358743086096, guid: f1a0c736181fed94386d02f1c0c1d655, type: 3}
   anim: {fileID: 0}
   blip: 0
+  isActivated: 0
+  AudioSource: {fileID: 0}
+  playerAudSource: {fileID: 0}
+  AudioManager: {fileID: 0}
 --- !u!95 &741542399844085645
 Animator:
   serializedVersion: 5
@@ -149,7 +153,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
