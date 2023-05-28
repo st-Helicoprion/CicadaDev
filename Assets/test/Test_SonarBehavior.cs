@@ -29,7 +29,7 @@ public class Test_SonarBehavior : MonoBehaviour
     {
         transform.position += Vector3.up * Speed * Time.deltaTime;
         Distance += Speed*Time.deltaTime;
-        if (Distance >= SonarScale / 2)
+        if (Distance >= SonarScale/2)
         {
             Destroy(this.gameObject);
             Distance=0;

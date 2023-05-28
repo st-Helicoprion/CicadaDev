@@ -12,7 +12,7 @@ public class Test_SonarScaleUp : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             test_SonarBehavior = prefab.GetComponent<Test_SonarBehavior>();
-            Instantiate(prefab, transform.position - new Vector3(0, test_SonarBehavior.SonarScale, 0), Quaternion.identity);
+            Instantiate(prefab, transform.position-prefab.transform.localScale, Quaternion.identity);
         }
     }
 
